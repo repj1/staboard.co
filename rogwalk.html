@@ -47,7 +47,6 @@
             width: 100%;
         }
 
-        /* Updated Per Instructions */
         .back-btn {
             font-weight: 600;
             font-size: 0.9rem;
@@ -93,3 +92,127 @@
         .line-4 { font-size: 2.3rem; font-weight: 700; opacity: 0.95; letter-spacing: -1px; }
         .line-5 { font-size: 2.8rem; font-weight: 800; letter-spacing: -1.5px; }
         .line-6 { font-size: 3.2rem; font-weight: 800; letter-spacing: -2px; }
+        .line-7 { font-size: 3.6rem; font-weight: 800; letter-spacing: -2px; } /* Fixed Bracket Here */
+
+        .emphasis-glow {
+            color: var(--accent-color);
+            font-size: 4.5rem;
+            font-weight: 800;
+            letter-spacing: -3px;
+            margin-top: 0.5rem;
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        /* Widescreen Slider Canvas */
+        .rico-canvas {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #1a1a1a;
+            padding: 1.5rem;
+            border-radius: 24px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+
+        .slider-wrapper {
+            position: relative;
+            width: 100%;
+            height: 450px;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .slider-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.6s ease-in-out;
+        }
+
+        .slider-slide.active {
+            opacity: 1;
+            z-index: 2;
+        }
+
+        .slider-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #444444;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .dot.active {
+            background-color: var(--accent-color);
+            transform: scale(1.2);
+        }
+
+        footer {
+            padding: 3rem 5%;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            opacity: 0.3;
+            letter-spacing: 0.5px;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); color: #5ef095; }
+            100% { transform: scale(1); }
+        }
+
+        @media (max-width: 768px) {
+            .line-1 { font-size: 0.9rem; }
+            .line-2 { font-size: 1.1rem; }
+            .line-3 { font-size: 1.3rem; }
+            .line-4 { font-size: 1.6rem; }
+            .line-5 { font-size: 2rem; }
+            .line-6 { font-size: 2.3rem; }
+            .line-7 { font-size: 2.3rem; }
+            .emphasis-glow { font-size: 3rem; }
+            .slider-wrapper { height: 350px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="back-btn">← Roll him back</a>
+        <a href="index.html" class="logo">staboard<span>.co</span></a>
+    </nav>
+
+    <main class="rogwalk-container">
+        <div class="rogwalk-statement">
+            <span class="line-1">Do you want to go on one,</span>
+            <span class="line-2">be on one,</span>
+            <span class="line-3">venture onto one,</span>
+            <span class="line-4">walk on one,</span>
+            <span class="line-5">trot on one…</span>
+            <span class="line-6">you do?</span>
+            <span class="line-7">YOU DO?</span>
+            <span class="emphasis-glow">YOU DOOOOO!</span>
+        </div>
+
+        <div class="rico-canvas">
