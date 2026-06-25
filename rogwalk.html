@@ -77,29 +77,24 @@
             text-align: center;
         }
 
-        /* Incremental Typography Stack */
+        /* Grouped Compact Typography Layout */
         .rogwalk-statement {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 4rem;
+            gap: 0.6rem;
+            margin-bottom: 3rem;
         }
 
-        .line-1 { font-size: 1.1rem; font-weight: 300; opacity: 0.5; }
-        .line-2 { font-size: 1.4rem; font-weight: 400; opacity: 0.7; }
-        .line-3 { font-size: 1.8rem; font-weight: 600; opacity: 0.85; letter-spacing: -0.5px; }
-        .line-4 { font-size: 2.3rem; font-weight: 700; opacity: 0.95; letter-spacing: -1px; }
-        .line-5 { font-size: 2.8rem; font-weight: 800; letter-spacing: -1.5px; }
-        .line-6 { font-size: 3.2rem; font-weight: 800; letter-spacing: -2px; }
-        .line-7 { font-size: 3.6rem; font-weight: 800; letter-spacing: -2px; } /* Fixed Bracket Here */
+        .line-1 { font-size: 1.4rem; font-weight: 400; opacity: 0.6; }
+        .line-2 { font-size: 2.2rem; font-weight: 700; opacity: 0.9; letter-spacing: -1px; }
 
         .emphasis-glow {
             color: var(--accent-color);
             font-size: 4.5rem;
             font-weight: 800;
             letter-spacing: -3px;
-            margin-top: 0.5rem;
+            margin-top: 0.2rem;
             animation: pulse 2s infinite ease-in-out;
         }
 
@@ -184,13 +179,8 @@
         }
 
         @media (max-width: 768px) {
-            .line-1 { font-size: 0.9rem; }
-            .line-2 { font-size: 1.1rem; }
-            .line-3 { font-size: 1.3rem; }
-            .line-4 { font-size: 1.6rem; }
-            .line-5 { font-size: 2rem; }
-            .line-6 { font-size: 2.3rem; }
-            .line-7 { font-size: 2.3rem; }
+            .line-1 { font-size: 1.1rem; }
+            .line-2 { font-size: 1.6rem; }
             .emphasis-glow { font-size: 3rem; }
             .slider-wrapper { height: 350px; }
         }
@@ -205,14 +195,56 @@
 
     <main class="rogwalk-container">
         <div class="rogwalk-statement">
-            <span class="line-1">Do you want to go on one,</span>
-            <span class="line-2">be on one,</span>
-            <span class="line-3">venture onto one,</span>
-            <span class="line-4">walk on one,</span>
-            <span class="line-5">trot on one…</span>
-            <span class="line-6">you do?</span>
-            <span class="line-7">YOU DO?</span>
+            <span class="line-1">Do you want to go on one, be on one, venture onto one?</span>
+            <span class="line-2">Walk on one, trot on one… you do? YOU DO?</span>
             <span class="emphasis-glow">YOU DOOOOO!</span>
         </div>
 
         <div class="rico-canvas">
+            <div class="slider-wrapper">
+                <div class="slider-slide active"><img src="rico009.jpg" alt="Rico Operational Profile 9"></div>
+                <div class="slider-slide"><img src="rico010.jpg" alt="Rico Operational Profile 10"></div>
+                <div class="slider-slide"><img src="rico011.jpg" alt="Rico Operational Profile 11"></div>
+                <div class="slider-slide"><img src="rico012.jpg" alt="Rico Operational Profile 12"></div>
+                <div class="slider-slide"><img src="rico013.jpg" alt="Rico Operational Profile 13"></div>
+            </div>
+            <div class="slider-dots" id="sliderDots"></div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 STABOARD.CO. ENGAGED IN ACTIVE ROGWALK PARAMETERS.</p>
+    </footer>
+
+    <script>
+        const slides = document.querySelectorAll('.slider-slide');
+        const dotsContainer = document.getElementById('sliderDots');
+        let currentSlide = 0;
+        const slideInterval = 3000; 
+
+        slides.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if (index === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => goToSlide(index));
+            dotsContainer.appendChild(dot);
+        });
+
+        const dots = document.querySelectorAll('.dot');
+
+        function goToSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            dots[currentSlide].classList.remove('active');
+            currentSlide = (n + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+
+        function nextSlide() {
+            goToSlide(currentSlide + 1);
+        }
+
+        setInterval(nextSlide, slideInterval);
+    </script>
+</body>
+</html>
