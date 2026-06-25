@@ -27,10 +27,7 @@
             color: var(--text-color);
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
-            background-image: url('rsb2.png');
-            background-repeat: no-repeat;
-            background-position: center 300px;
-            background-size: 800px auto;
+            overflow-x: hidden;
         }
 
         /* Navigation */
@@ -41,6 +38,8 @@
             padding: 2rem 5%;
             max-width: 1400px;
             margin: 0 auto;
+            position: relative;
+            z-index: 100;
         }
 
         .logo {
@@ -52,29 +51,96 @@
             text-transform: lowercase;
         }
 
-        .nav-links a {
-            text-decoration: none;
-            color: var(--secondary-text);
-            font-weight: 500;
-            margin-left: 2rem;
-            transition: color 0.2s ease;
+        /* Hamburger Menu Icon */
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 20px;
+            cursor: pointer;
+            z-index: 101;
         }
 
-        .nav-links a:hover {
-            color: var(--text-color);
+        .hamburger span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: var(--text-color);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        /* Hamburger Animation when Open */
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(8.5px) rotate(45deg);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-8.5px) rotate(-45deg);
+        }
+
+        /* Fullscreen Rogwalk Navigation Overlay */
+        .rogwalk-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100vh;
+            background-color: #111111;
+            z-index: 99;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+            padding: 2rem;
+        }
+
+        .rogwalk-menu.active {
+            right: 0;
+        }
+
+        .rogwalk-links {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .rogwalk-links a {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            opacity: 0.4;
+            transition: opacity 0.2s ease, transform 0.2s ease, color 0.2s ease;
+            cursor: pointer;
+        }
+
+        .rogwalk-links a:hover {
+            opacity: 1;
+            transform: scale(1.05);
+            color: #4ade80; /* Lights up green on hover because walks are good */
         }
 
         /* Hero Section */
         .hero {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 8rem 5% 10rem 5%;
+            padding: 4rem 5% 6rem 5%;
             text-align: center;
+            position: relative;
+            z-index: 10;
         }
 
         .hero .badge {
             display: inline-block;
-            background-color: #e2e8f0;
+            background-color: rgba(226, 232, 240, 0.8);
             color: #334155;
             padding: 0.35rem 1rem;
             border-radius: 50px;
@@ -83,6 +149,7 @@
             letter-spacing: 1px;
             text-transform: uppercase;
             margin-bottom: 2rem;
+            backdrop-filter: blur(4px);
         }
 
         .hero h1 {
@@ -104,21 +171,22 @@
             font-weight: 300;
         }
 
-        .cta-btn {
-            display: inline-block;
-            background-color: var(--text-color);
-            color: #ffffff;
-            padding: 1.1rem 2.8rem;
-            text-decoration: none;
-            font-weight: 600;
-            border-radius: 50px;
-            transition: transform 0.2s ease, background-color 0.2s ease;
-            font-size: 0.95rem;
+        /* Dedicated Premium Rico Feature Portrait */
+        .rico-canvas {
+            max-width: 600px;
+            margin: 0 auto 4rem auto;
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            border: 1px solid var(--border-color);
         }
 
-        .cta-btn:hover {
-            transform: translateY(-2px);
-            background-color: #222222;
+        .rico-canvas img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 12px;
         }
 
         /* Features Section */
@@ -126,6 +194,8 @@
             background-color: #ffffff;
             padding: 8rem 5%;
             border-top: 1px solid var(--border-color);
+            position: relative;
+            z-index: 10;
         }
 
         .features {
@@ -166,6 +236,8 @@
             padding: 5rem 5%;
             text-align: center;
             border-top: 1px solid #222222;
+            position: relative;
+            z-index: 10;
         }
 
         footer p {
@@ -174,13 +246,11 @@
             letter-spacing: 0.5px;
         }
 
-        /* Responsive Design */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.8rem; letter-spacing: -1.5px; }
+            .hero h1 { font-size: 3rem; letter-spacing: -1.5px; }
             .hero p { font-size: 1.1rem; }
-            nav { padding: 1.5rem 5%; }
-            .nav-links { display: none; }
             .features { gap: 2.5rem; }
+            .rico-canvas { padding: 1rem; margin-bottom: 2rem; }
         }
     </style>
 </head>
@@ -188,17 +258,34 @@
 
     <nav>
         <a href="#" class="logo">staboard<span>.co</span></a>
-        <div class="nav-links">
-            <a href="#specifications">Specifications</a>
-            <a href="mailto:records@staboard.co">Inquiries</a>
+        <div class="hamburger" id="hamburgerMenu">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
     </nav>
 
+    <div class="rogwalk-menu" id="rogwalkOverlay">
+        <div class="rogwalk-links">
+            <a onclick="handleRogwalkClick('Do')">Do</a>
+            <a onclick="handleRogwalkClick('You')">You</a>
+            <a onclick="handleRogwalkClick('Want')">Want</a>
+            <a onclick="handleRogwalkClick('To')">To</a>
+            <a onclick="handleRogwalkClick('Go')">Go</a>
+            <a onclick="handleRogwalkClick('On')">On</a>
+            <a onclick="handleRogwalkClick('A')">A</a>
+            <a onclick="handleRogwalkClick('Rogwalk?')">Rogwalk?</a>
+        </div>
+    </div>
+
     <section class="hero">
-        <span class="badge">Official Dossier</span>
+        <span class="badge">Stinky. Glorious.</span>
         <h1>HIM!?</h1>
         <p>An elegant look into the daily operations of Rico Staboard. High Quality. Unapologetic. Absolute.</p>
-        <a href="#specifications" class="cta-btn">View RSB Spec Sheet</a>
+        
+        <div class="rico-canvas">
+            <img src="rsb2.png" alt="Rico Staboard Architectural Profile">
+        </div>
     </section>
 
     <div id="specifications" class="features-container">
@@ -224,6 +311,25 @@
     <footer>
         <p>&copy; 2026 STABOARD.CO. ALL RIGHTS RESERVED TO THE TUBE.</p>
     </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburgerMenu');
+        const overlay = document.getElementById('rogwalkOverlay');
+
+        // Toggle menu open/close
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            overlay.classList.toggle('active');
+        });
+
+        // Dynamic click behavior for the Rogwalk stack
+        function handleRogwalkClick(word) {
+            alert(`🚨 THE TUBE RESPONDED TO: "${word.toUpperCase()}"\nInitiating high-quality tactical deployment!`);
+            // You can change what happens here later (like redirecting to a secret subpage!)
+            hamburger.classList.remove('active');
+            overlay.classList.remove('active');
+        }
+    </script>
 
 </body>
 </html>
