@@ -32,3 +32,253 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        /* 30% Opacity Repeating Wallpaper Layer */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: url('rico0030.jpg');
+            background-repeat: repeat;
+            background-size: 250px auto; 
+            opacity: 0.3; 
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            position: relative;
+            z-index: 10;
+        }
+
+        .back-btn {
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            color: var(--secondary-text);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.2s ease;
+        }
+
+        .back-btn:hover {
+            color: var(--text-color);
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.4rem;
+            letter-spacing: -0.5px;
+            text-decoration: none;
+            color: var(--text-color);
+            text-transform: lowercase;
+        }
+
+        .error-container {
+            max-width: 850px;
+            margin: 2rem auto 4rem auto;
+            padding: 0 5%;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .error-code {
+            font-size: 5rem;
+            font-weight: 800;
+            letter-spacing: -3px;
+            color: var(--text-color);
+            line-height: 1;
+            margin-bottom: 1.5rem;
+        }
+
+        .error-manifesto {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            line-height: 1.3;
+            margin-bottom: 2.5rem;
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .renergy-alert {
+            color: var(--accent-pink);
+            font-weight: 800;
+        }
+
+        .error-instructions {
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: var(--secondary-text);
+            margin-bottom: 3.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* 5-Pic Carousel Canvas Frame */
+        .rico-canvas {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 1.5rem;
+            border-radius: 24px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+        }
+
+        .slider-wrapper {
+            position: relative;
+            width: 100%;
+            height: 450px;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .slider-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.6s ease-in-out;
+        }
+
+        .slider-slide.active {
+            opacity: 1;
+            z-index: 2;
+        }
+
+        .slider-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #dddddd;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .dot.active {
+            background-color: var(--text-color);
+            transform: scale(1.2);
+        }
+
+        footer {
+            padding: 3rem 5%;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            background: rgba(250, 250, 250, 0.8);
+            backdrop-filter: blur(5px);
+            position: relative;
+            z-index: 10;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            opacity: 0.5;
+            letter-spacing: 0.5px;
+        }
+
+        @media (max-width: 768px) {
+            .error-code { font-size: 3.5rem; }
+            .error-manifesto { font-size: 1.4rem; }
+            .error-instructions { font-size: 1rem; }
+            .slider-wrapper { height: 350px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="back-btn">← Roll back home</a>
+        <a href="index.html" class="logo">staboard<span>.co</span></a>
+    </nav>
+
+    <main class="error-container">
+        <h1 class="error-code">404</h1>
+        
+        <h2 class="error-manifesto">
+            He has refused your request because it is too hot, too cold, or because walking requires <span class="renergy-alert">RENERGY!?</span>
+        </h2>
+        
+        <p class="error-instructions">
+            Put him into the backyard and roll accordingly, then provide rentastick and retry your request later.
+        </p>
+
+        <div class="rico-canvas">
+            <div class="slider-wrapper">
+                <div class="slider-slide active"><img src="rico0015.jpg" alt="Rico Tactical Exception 15"></div>
+                <div class="slider-slide"><img src="rico0025.jpg" alt="Rico Tactical Exception 25"></div>
+                <div class="slider-slide"><img src="rico0027.jpg" alt="Rico Tactical Exception 27"></div>
+                <div class="slider-slide"><img src="rico0028.jpg" alt="Rico Tactical Exception 28"></div>
+                <div class="slider-slide"><img src="rico0029.jpg" alt="Rico Tactical Exception 29"></div>
+            </div>
+            <div class="slider-dots" id="sliderDots"></div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 STABOARD.CO. ERROR PROTOCOL ACTIVE.</p>
+    </footer>
+
+    <script>
+        const slides = document.querySelectorAll('.slider-slide');
+        const dotsContainer = document.getElementById('sliderDots');
+        let currentSlide = 0;
+        const slideInterval = 3500; 
+
+        slides.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if (index === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => goToSlide(index));
+            dotsContainer.appendChild(dot);
+        });
+
+        const dots = document.querySelectorAll('.dot');
+
+        function goToSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            dots[currentSlide].classList.remove('active');
+            currentSlide = (n + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+
+        function nextSlide() {
+            goToSlide(currentSlide + 1);
+        }
+
+        setInterval(nextSlide, slideInterval);
+    </script>
+</body>
+</html>
