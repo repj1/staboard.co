@@ -409,11 +409,14 @@
             logo.classList.toggle('menu-open');
         });
 
-        function handleRogwalkClick(word) {
-            alert(`🚨 THE TUBE RESPONDED TO: "${word.toUpperCase()}"\nInitiating high-quality tactical deployment!`);
+                function handleRogwalkClick(word) {
             hamburger.classList.remove('active');
             overlay.classList.remove('active');
             logo.classList.remove('menu-open');
+            
+            // Seamless immediate jump straight to the walk manifesto page
+            window.location.href = "rogwalk.html";
+    
         }
 
         // --- Engine for Carousel Logic ---
