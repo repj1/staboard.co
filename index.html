@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Staboard.co | Rico Staboard</title>
+    
+    <link rel="icon" type="image/png" href="rsb3.png">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -39,7 +42,7 @@
             max-width: 1400px;
             margin: 0 auto;
             position: relative;
-            z-index: 100;
+            z-index: 102; /* Raised above overlay layer */
         }
 
         .logo {
@@ -49,6 +52,12 @@
             text-decoration: none;
             color: var(--text-color);
             text-transform: lowercase;
+            transition: color 0.3s ease;
+        }
+
+        /* Dynamically inverted logo visibility when side menu drops in */
+        .logo.menu-open {
+            color: #ffffff;
         }
 
         /* Hamburger Menu Icon */
@@ -59,7 +68,7 @@
             width: 30px;
             height: 20px;
             cursor: pointer;
-            z-index: 101;
+            z-index: 103; /* Kept on topmost layer */
         }
 
         .hamburger span {
@@ -71,7 +80,10 @@
             transition: all 0.3s ease;
         }
 
-        /* Hamburger Animation when Open */
+        /* Hamburger Transitions & State Inversion */
+        .hamburger.active span {
+            background-color: #ffffff;
+        }
         .hamburger.active span:nth-child(1) {
             transform: translateY(8.5px) rotate(45deg);
         }
@@ -82,38 +94,39 @@
             transform: translateY(-8.5px) rotate(-45deg);
         }
 
-        /* Fullscreen Rogwalk Navigation Overlay */
+        /* 1/3 Screen Side Panel Overlay */
         .rogwalk-menu {
             position: fixed;
             top: 0;
-            right: -100%;
-            width: 100%;
+            right: -33.333%; /* Offscreen boundary anchor */
+            width: 33.333%;  /* Explicit 1/3 screen layout width */
             height: 100vh;
             background-color: #111111;
-            z-index: 99;
+            z-index: 101;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
             padding: 2rem;
+            box-shadow: -10px 0 30px rgba(0,0,0,0.1);
         }
 
         .rogwalk-menu.active {
-            right: 0;
+            right: 0; /* Smooth structural entrance */
         }
 
         .rogwalk-links {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 0.8rem;
+            gap: 0.6rem;
         }
 
         .rogwalk-links a {
             text-decoration: none;
             color: #ffffff;
-            font-size: 2rem;
+            font-size: 1.6rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: -1px;
@@ -125,7 +138,7 @@
         .rogwalk-links a:hover {
             opacity: 1;
             transform: scale(1.05);
-            color: #4ade80; /* Lights up green on hover because walks are good */
+            color: #4ade80;
         }
 
         /* Hero Section */
@@ -178,158 +191,4 @@
             background: #ffffff;
             padding: 2rem;
             border-radius: 24px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-            border: 1px solid var(--border-color);
-        }
-
-        .rico-canvas img {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 12px;
-        }
-
-        /* Features Section */
-        .features-container {
-            background-color: #ffffff;
-            padding: 8rem 5%;
-            border-top: 1px solid var(--border-color);
-            position: relative;
-            z-index: 10;
-        }
-
-        .features {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 4rem;
-        }
-
-        .feature-card {
-            padding: 0.5rem;
-        }
-
-        .feature-card .emoji {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            display: block;
-        }
-
-        .feature-card h3 {
-            font-size: 1.6rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            letter-spacing: -0.5px;
-        }
-
-        .feature-card p {
-            color: var(--secondary-text);
-            font-weight: 400;
-            font-size: 1.05rem;
-        }
-
-        /* Footer */
-        footer {
-            background-color: #111111;
-            color: #ffffff;
-            padding: 5rem 5%;
-            text-align: center;
-            border-top: 1px solid #222222;
-            position: relative;
-            z-index: 10;
-        }
-
-        footer p {
-            font-size: 0.9rem;
-            opacity: 0.5;
-            letter-spacing: 0.5px;
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 3rem; letter-spacing: -1.5px; }
-            .hero p { font-size: 1.1rem; }
-            .features { gap: 2.5rem; }
-            .rico-canvas { padding: 1rem; margin-bottom: 2rem; }
-        }
-    </style>
-</head>
-<body>
-
-    <nav>
-        <a href="#" class="logo">staboard<span>.co</span></a>
-        <div class="hamburger" id="hamburgerMenu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </nav>
-
-    <div class="rogwalk-menu" id="rogwalkOverlay">
-        <div class="rogwalk-links">
-            <a onclick="handleRogwalkClick('Do')">Do</a>
-            <a onclick="handleRogwalkClick('You')">You</a>
-            <a onclick="handleRogwalkClick('Want')">Want</a>
-            <a onclick="handleRogwalkClick('To')">To</a>
-            <a onclick="handleRogwalkClick('Go')">Go</a>
-            <a onclick="handleRogwalkClick('On')">On</a>
-            <a onclick="handleRogwalkClick('A')">A</a>
-            <a onclick="handleRogwalkClick('Rogwalk?')">Rogwalk?</a>
-        </div>
-    </div>
-
-    <section class="hero">
-        <span class="badge">Stinky. Glorious.</span>
-        <h1>HIM!?</h1>
-        <p>An elegant look into the daily operations of Rico Staboard. High Quality. Unapologetic. Absolute.</p>
-        
-        <div class="rico-canvas">
-            <img src="rsb2.png" alt="Rico Staboard Architectural Profile">
-        </div>
-    </section>
-
-    <div id="specifications" class="features-container">
-        <section class="features">
-            <div class="feature-card">
-                <span class="emoji">🥩</span>
-                <h3>He’s Meat!</h3>
-                <p>Pure substance. Some say he’s beef. Built with premium structural integrity, RSB represents the pinnacle of canine engineering.</p>
-            </div>
-            <div class="feature-card">
-                <span class="emoji">🧪</span>
-                <h3>The Tube</h3>
-                <p>An aerodynamic marvel. Whether lounging or in motion, he maintains the perfect, streamlined dimensions of a Stinky Tube.</p>
-            </div>
-            <div class="feature-card">
-                <span class="emoji">🦨</span>
-                <h3>Big Stinky</h3>
-                <p>A presence so profound it can be detected before it is seen. A signature atmosphere reserved only for the highest quality individuals.</p>
-            </div>
-        </section>
-    </div>
-
-    <footer>
-        <p>&copy; 2026 STABOARD.CO. ALL RIGHTS RESERVED TO THE TUBE.</p>
-    </footer>
-
-    <script>
-        const hamburger = document.getElementById('hamburgerMenu');
-        const overlay = document.getElementById('rogwalkOverlay');
-
-        // Toggle menu open/close
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            overlay.classList.toggle('active');
-        });
-
-        // Dynamic click behavior for the Rogwalk stack
-        function handleRogwalkClick(word) {
-            alert(`🚨 THE TUBE RESPONDED TO: "${word.toUpperCase()}"\nInitiating high-quality tactical deployment!`);
-            // You can change what happens here later (like redirecting to a secret subpage!)
-            hamburger.classList.remove('active');
-            overlay.classList.remove('active');
-        }
-    </script>
-
-</body>
-</html>
+            box-shadow:
