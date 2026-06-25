@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Rogwalk Protocol | Staboard.co</title>
+    
+    <link rel="icon" type="image/png" href="rsb3.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #111111; /* Inverted to pure tactical dark mode for the walk protocol */
+            --text-color: #ffffff;
+            --secondary-text: #888888;
+            --accent-color: #4ade80;
+            --border-color: #222222;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .back-btn {
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            color: var(--secondary-text);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.2s ease;
+        }
+
+        .back-btn:hover {
+            color: var(--text-color);
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.4rem;
+            letter-spacing: -0.5px;
+            text-decoration: none;
+            color: var(--text-color);
+            text-transform: lowercase;
+        }
+
+        .rogwalk-container {
+            max-width: 800px;
+            margin: 4rem auto;
+            padding: 0 5%;
+            text-align: center;
+        }
+
+        .rogwalk-statement {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -1.5px;
+            line-height: 1.2;
+            margin-bottom: 4rem;
+        }
+
+        .emphasis-glow {
+            color: var(--accent-color);
+            display: block;
+            font-size: 3.5rem;
+            margin-top: 1.5rem;
+            letter-spacing: -2px;
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        /* Next Era Slider Canvas */
+        .rico-canvas {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #1a1a1a;
+            padding: 1.5rem;
+            border-radius: 24px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+
+        .slider-wrapper {
+            position: relative;
+            width: 100%;
+            height: 450px;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .slider-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.6s ease-in-out;
+        }
+
+        .slider-slide.active {
+            opacity: 1;
+            z-index: 2;
+        }
+
+        .slider-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #444444;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .dot.active {
+            background-color: var(--accent-color);
+            transform: scale(1.2);
+        }
+
+        footer {
+            padding: 3rem 5%;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            opacity: 0.3;
+            letter-spacing: 0.5px;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); color: #5ef095; }
+            100% { transform: scale(1); }
+        }
+
+        @media (max-width: 768px) {
+            .rogwalk-statement { font-size: 1.8rem; }
+            .emphasis-glow { font-size: 2.5rem; }
+            .slider-wrapper { height: 350px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="back-btn">← Abort Protocol</a>
+        <a href="index.html" class="logo">staboard<span>.co</span></a>
+    </nav>
+
+    <main class="rogwalk-container">
+        <h2 class="rogwalk-statement">
+            Do you want to go on one, be on one, venture onto one, walk on one, trot on one… you do? YOU DO? 
+            <span class="emphasis-glow">YOU DOOOOO!</span>
+        </h2>
+
+        <div class="rico-canvas">
+            <div class="slider-wrapper">
+                <div class="slider-slide active"><img src="rico009.jpg" alt="Rico Tactical Deployment 9"></div>
+                <div class="slider-slide"><img src="rico010.jpg" alt="Rico Tactical Deployment 10"></div>
+                <div class="slider-slide"><img src="rico011.jpg" alt="Rico Tactical Deployment 11"></div>
+                <div class="slider-slide"><img src="rico012.jpg" alt="Rico Tactical Deployment 12"></div>
+                <div class="slider-slide"><img src="rico013.jpg" alt="Rico Tactical Deployment 13"></div>
+            </div>
+            <div class="slider-dots" id="sliderDots"></div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 STABOARD.CO. ENGAGED IN ACTIVE ROGWALK PARAMETERS.</p>
+    </footer>
+
+    <script>
+        const slides = document.querySelectorAll('.slider-slide');
+        const dotsContainer = document.getElementById('sliderDots');
+        let currentSlide = 0;
+        const slideInterval = 3000; // Fast cadence for the walk hype track
+
+        slides.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if (index === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => goToSlide(index));
+            dotsContainer.appendChild(dot);
+        });
+
+        const dots = document.querySelectorAll('.dot');
+
+        function goToSlide(n) {
+            slides[currentSlide].classList.remove('active');
