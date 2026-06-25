@@ -36,7 +36,7 @@
         /* Navigation */
         nav {
             display: flex;
-            flex-row-reverse: row-reverse; /* Flips the positioning of logo and menu button */
+            flex-direction: row-reverse; /* Fixed syntax error here */
             justify-content: space-between;
             align-items: center;
             padding: 2rem 5%;
@@ -54,6 +54,10 @@
             color: var(--text-color);
             text-transform: lowercase;
             transition: color 0.3s ease;
+        }
+
+        .logo.menu-open {
+            color: #ffffff;
         }
 
         /* Hamburger Menu Icon - Locked on the Left */
@@ -94,28 +98,28 @@
         .rogwalk-menu {
             position: fixed;
             top: 0;
-            left: -33.333%; /* Offscreen boundary anchor on left side */
-            width: 33.333%;  /* Explicit 1/3 screen layout width */
+            left: -33.333%; 
+            width: 33.333%;  
             height: 100vh;
             background-color: #111111;
             z-index: 101;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: flex-start; /* Left-aligns container items */
-            padding: 2rem 15% 2rem 5%; /* Generous left padding for text alignment */
+            align-items: flex-start; 
+            padding: 2rem 5% 2rem 5%; 
             transition: left 0.4s cubic-bezier(0.77, 0, 0.175, 1);
             box-shadow: 10px 0 30px rgba(0,0,0,0.1);
         }
 
         .rogwalk-menu.active {
-            left: 0; /* Smooth structural entrance from the left */
+            left: 0; 
         }
 
         .rogwalk-links {
             display: flex;
             flex-direction: column;
-            align-items: flex-start; /* Left-aligns individual links */
+            align-items: flex-start; 
             gap: 0.6rem;
         }
 
@@ -134,7 +138,7 @@
 
         .rogwalk-links a:hover {
             opacity: 1;
-            transform: translateX(5px); /* Changed to dynamic slight right-nudge on hover */
+            transform: translateX(5px); 
             color: #4ade80;
         }
 
@@ -181,7 +185,7 @@
             font-weight: 300;
         }
 
-        /* Dedicated Premium Rico Feature Portrait - Repaired */
+        /* Dedicated Premium Rico Feature Portrait */
         .rico-canvas {
             max-width: 600px;
             margin: 0 auto 4rem auto;
@@ -234,4 +238,124 @@
         }
 
         .feature-card p {
-            color:
+            color: var(--secondary-text);
+            font-weight: 400;
+            font-size: 1.05rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #111111;
+            color: #ffffff;
+            padding: 5rem 5%;
+            text-align: center;
+            border-top: 1px solid #222222;
+            position: relative;
+            z-index: 10;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            opacity: 0.5;
+            letter-spacing: 0.5px;
+        }
+
+        /* Media Breakpoints */
+        @media (max-width: 1024px) {
+            .rogwalk-menu {
+                width: 50%; 
+                left: -50%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .rogwalk-menu {
+                width: 100%; 
+                left: -100%;
+            }
+            .hero h1 { font-size: 3rem; letter-spacing: -1.5px; }
+            .hero p { font-size: 1.1rem; }
+            .features { gap: 2.5rem; }
+            .rico-canvas { padding: 1rem; margin-bottom: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="hamburger" id="hamburgerMenu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <a href="#" class="logo" id="siteLogo">staboard<span>.co</span></a>
+    </nav>
+
+    <div class="rogwalk-menu" id="rogwalkOverlay">
+        <div class="rogwalk-links">
+            <a onclick="handleRogwalkClick('Do')">Do</a>
+            <a onclick="handleRogwalkClick('You')">You</a>
+            <a onclick="handleRogwalkClick('Want')">Want</a>
+            <a onclick="handleRogwalkClick('To')">To</a>
+            <a onclick="handleRogwalkClick('Go')">Go</a>
+            <a onclick="handleRogwalkClick('On')">On</a>
+            <a onclick="handleRogwalkClick('A')">A</a>
+            <a onclick="handleRogwalkClick('Rogwalk?')">Rogwalk?</a>
+        </div>
+    </div>
+
+    <section class="hero">
+        <span class="badge">Stinky. Glorious.</span>
+        <h1>HIM!?</h1>
+        <p>An elegant look into the daily operations of Rico Staboard. High Quality. Unapologetic. Absolute.</p>
+        
+        <div class="rico-canvas">
+            <img src="rsb2.png" alt="Rico Staboard Architectural Profile">
+        </div>
+    </section>
+
+    <div id="specifications" class="features-container">
+        <section class="features">
+            <div class="feature-card">
+                <span class="emoji">🥩</span>
+                <h3>He’s Meat!</h3>
+                <p>Pure substance. Some say he’s beef. Built with premium structural integrity, RSB represents the pinnacle of canine engineering.</p>
+            </div>
+            <div class="feature-card">
+                <span class="emoji">🧪</span>
+                <h3>The Tube</h3>
+                <p>An aerodynamic marvel. Whether lounging or in motion, he maintains the perfect, streamlined dimensions of a Stinky Tube.</p>
+            </div>
+            <div class="feature-card">
+                <span class="emoji">🦨</span>
+                <h3>Big Stinky</h3>
+                <p>A presence so profound it can be detected before it is seen. A signature atmosphere reserved only for the highest quality individuals.</p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 STABOARD.CO. ALL RIGHTS RESERVED TO THE TUBE.</p>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburgerMenu');
+        const overlay = document.getElementById('rogwalkOverlay');
+        const logo = document.getElementById('siteLogo');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            overlay.classList.toggle('active');
+            logo.classList.toggle('menu-open');
+        });
+
+        function handleRogwalkClick(word) {
+            alert(`🚨 THE TUBE RESPONDED TO: "${word.toUpperCase()}"\nInitiating high-quality tactical deployment!`);
+            hamburger.classList.remove('active');
+            overlay.classList.remove('active');
+            logo.classList.remove('menu-open');
+        }
+    </script>
+
+</body>
+</html>
