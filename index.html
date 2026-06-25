@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staboard.co | Rico Staboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #fafafa;
+            --text-color: #111111;
+            --secondary-text: #666666;
+            --border-color: #eeeeee;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.4rem;
+            letter-spacing: -0.5px;
+            text-decoration: none;
+            color: var(--text-color);
+            text-transform: lowercase;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--secondary-text);
+            font-weight: 500;
+            margin-left: 2rem;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 8rem 5% 10rem 5%;
+            text-align: center;
+        }
+
+        .hero .badge {
+            display: inline-block;
+            background-color: #e2e8f0;
+            color: #334155;
+            padding: 0.35rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 700;
+            letter-spacing: -2.5px;
+            line-height: 1.05;
+            margin-bottom: 1.5rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--secondary-text);
+            max-width: 600px;
+            margin: 0 auto 3rem auto;
+            font-weight: 300;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background-color: var(--text-color);
+            color: #ffffff;
+            padding: 1.1rem 2.8rem;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+            font-size: 0.95rem;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            background-color: #222222;
+        }
+
+        /* Features Section */
+        .features-container {
+            background-color: #ffffff;
+            padding: 8rem 5%;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .features {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 4rem;
+        }
+
+        .feature-card {
+            padding: 0.5rem;
+        }
+
+        .feature-card .emoji {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .feature-card h3 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            letter-spacing: -0.5px;
+        }
+
+        .feature-card p {
+            color: var(--secondary-text);
+            font-weight: 400;
+            font-size: 1.05rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #111111;
+            color: #ffffff;
+            padding: 5rem 5%;
+            text-align: center;
+            border-top: 1px solid #222222;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            opacity: 0.5;
+            letter-spacing: 0.5px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.8rem; letter-spacing: -1.5px; }
+            .hero p { font-size: 1.1rem; }
+            nav { padding: 1.5rem 5%; }
+            .nav-links { display: none; }
+            .features { gap: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo">staboard<span>.co</span></a>
+        <div class="nav-links">
+            <a href="#specifications">Specifications</a>
+            <a href="mailto:records@staboard.co">Inquiries</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <span class="badge">Official Dossier</span>
+        <h1>HIM!?</h1>
+        <p>An elegant look into the daily operations of Rico Staboard. High Quality. Unapologetic. Absolute.</p>
+        <a href="#specifications" class="cta-btn">View RSB Spec Sheet</a>
+    </section>
+
+    <div id="specifications" class="features-container">
+        <section class="features">
+            <div class="feature-card">
+                <span class="emoji">🥩</span>
+                <h3>He’s Meat!</h3>
+                <p>Pure substance. Some say he’s beef. Built with premium structural integrity, RSB represents the pinnacle of canine engineering.</p>
+            </div>
+            <div class="feature-card">
+                <span class="emoji">🧪</span>
+                <h3>The Tube</h3>
+                <p>An aerodynamic marvel. Whether lounging or in motion, he maintains the perfect, streamlined dimensions of a Stinky Tube.</p>
+            </div>
+            <div class="feature-card">
+                <span class="emoji">🦨</span>
+                <h3>Big Stinky</h3>
+                <p>A presence so profound it can be detected before it is seen. A signature atmosphere reserved only for the highest quality individuals.</p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 STABOARD.CO. ALL RIGHTS RESERVED TO THE TUBE.</p>
+    </footer>
+
+</body>
+</html>
